@@ -1,3 +1,7 @@
+/**
+ * Main Spring boot class for run the Saved Urls app.
+ *
+ */
 package com.manuel.storesurl
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
