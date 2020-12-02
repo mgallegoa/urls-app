@@ -1,7 +1,10 @@
 /**
  * Action Creator for the current URL
  */
-export const type = 'saveUrl';
+import api from '../../api' 
+
+export const type = 'saveUrl'
+
 
 const saveUrl = text => {
   // Return de action
@@ -9,6 +12,6 @@ const saveUrl = text => {
     type,
     payload: text
   };
-};
+}
 
 export default saveUrl;
