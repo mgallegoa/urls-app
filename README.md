@@ -20,3 +20,4 @@ Not used some use full libraries like RxJS, MaterialUI, etc for keep it simple a
 
 ##### The command for creat the project is: 
 command used npx create-react-app urls-app
+command used for add libraries: npm i react-router-dom redux react-redux bootswatch 

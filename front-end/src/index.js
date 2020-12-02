@@ -1,13 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "bootswatch/dist/superhero/bootstrap.min.css";
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
+
+import {Provider} from 'react-redux'
+import store from './redux/store'
+
+import MainPage from './components/mainpage'
+import Details from './components/details'
+
+
+
+const Root = (
+  <Provider store={store}>
+  <BrowserRouter>
+    <Switch>
+       <Route path="/urls-app" component={MainPage} />
+       <Route path="/urls-detail/:slug" component={Details} />
+       <Redirect from="/" to="/urls-app" />
+    </Switch>
+  </BrowserRouter>
+  </Provider>
+);
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  Root,
   document.getElementById('root')
 );
 
