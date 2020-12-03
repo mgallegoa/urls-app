@@ -14,12 +14,12 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/api/urls")
 class UrlsController(private val urlsService: UrlsService) {
 
     @PostMapping("/")
-    @ResponseStatus
     fun createUrl(@RequestBody url: Url): Url = urlsService.createUrl(url)
 
     @GetMapping("/")
