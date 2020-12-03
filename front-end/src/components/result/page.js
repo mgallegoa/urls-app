@@ -1,18 +1,13 @@
 /**
  * Page for the presentation
  */
-/*
-    {UrlType.map(
-      (urlType) =>
-          <option value={urlType.url}>{urlType.description}</option>
-      )}
- */
-
 import React, { Fragment } from 'react';
-import UrlType from '../../models/url'
 
 
 const Page = (props) => {
+  const {
+    goTo
+  } = props
   const results = props.results;
   return (
     <Fragment>
@@ -21,15 +16,15 @@ const Page = (props) => {
     
            {results.map((url) =>
 
-             <div className="card text-center mb-4" key={url.urlId}>
+             <div className="card text-center mb-4" key={url.id}>
                 <div className="card-body">
-                  <div className="form-group">
+                  <div className="form-group" onClick={() => goTo(`/urls-detail/${url.slug}`)}>
                      <strong> Url: </strong>{url.url}
                      <strong> Description: </strong>{url.description}
-                     <strong key={url.urlId}> Slug: </strong>{url.slug}
+                     <strong> Slug: </strong>{url.slug}
                      <strong>  Notes: </strong>{url.notes}
                   </div>
-                  <a href="#" className="btn btn-danger" name="delete" >Delete Url</a>
+                  <input type="button" className="btn btn-danger" name="delete" value="Delete Url" disabled/>
                 </div>
              </div>
            )}

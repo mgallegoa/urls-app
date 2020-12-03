@@ -1,16 +1,17 @@
-const defaultState = { urlId: 2,
-          url: 'http://start.spring.io',
-          description: 'This is my description',
-          slug: 'awasome-web-page',
-          notes: 'This is the notes 3'
-}
+import {type as findCurrentUrlsType} from '../actions/findCurrentUrls'
+import {findAllReducer as reducer} from './results'
+
+const defaultState = {};
 
 function reducer(state = defaultState, {type, payload}) {
   switch (type) {
-    case 'findCurrentUrl': {
-      return defaultState
-    }
+    case findCurrentUrlsType: {
+          if (!payload) {
+              return null;
+          }
 
+      return findAllReducer.find(n => n.slug === payload);
+    }
     default:
       return state;
   }

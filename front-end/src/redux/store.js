@@ -1,16 +1,16 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+
+import thunk from 'redux-thunk'
 
 import results from './reducers/results'
-import currentUrl from './reducers/currentUrl'
 import createUrl from './reducers/createUrl'
 
 
 const reducer = combineReducers({
   results,
-  currentUrl,
-  createUrl
+  createUrl,
 })
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;

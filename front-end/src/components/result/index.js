@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import { withRouter  } from 'react-router-dom'
 import Page from './page'
 import findAllUrls from '../../redux/actions/findAllUrls'
 
@@ -20,6 +21,9 @@ class Results extends Component {
     return (
         <Page 
            results={results}
+           goTo={(path) => {
+               this.props.history.push(path)
+           }}
         />
     );
   }
@@ -40,4 +44,4 @@ const mapDispatchToProps = {
 const wrapper = connect( mapStateToProps, mapDispatchToProps )
 const component = wrapper(Results)
 
-export default component
+export default withRouter (component);

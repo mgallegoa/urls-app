@@ -1,27 +1,21 @@
-import {type as saveUrl} from '../actions/saveUrl'
-
-import axios from 'axios'
-
-import UrlType from '../../models/url'
-
-
-const mockUrls =
-  {
-    urlId: 19,
-    url: 'http://start.spring.io',
-    description: 'This is my description',
-    slug: 'awasome-web-page',
-    notes: 'This is the notes 19'
-  }
-
+import {type as createUrl} from '../actions/createUrl'
+import { CREATE_URL_SUCCES } from '../../commons/constants'
 
 const defaultState = {};
 
 function reducer( state = defaultState, {type, payload}) {
 
   switch(type) {
-    case saveUrl: {
-      return mockUrls
+    case createUrl: {
+      return payload
+    }
+
+    case CREATE_URL_SUCCES: {
+       return payload
+    }
+
+    case CREATE_URL_SUCCES: {
+       return payload
     }
 
     default: {

@@ -4,16 +4,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Page from './page'
-import saveUrl from '../../redux/actions/saveUrl'
-
-const mockUrls =
-  {
-    urlId: 19,
-    url: 'http://start.spring.io',
-    description: 'This is my description',
-    slug: 'awasome-web-page',
-    notes: 'This is the notes 19'
-  }
+import createUrl from '../../redux/actions/createUrl'
 
 
 class Create extends Component {
@@ -24,26 +15,34 @@ class Create extends Component {
        urlDescription:'',
        urlNotes:'',
      };
+     this.createUrl = this.createUrl.bind(this)
+   }
 
-  }
+   createUrl(newUrl) {
+        this.state.newUrl = newUrl
+        this.props.createUrl(this.state.newUrl)
+   }
 
-  render () {
-    const {
+   render () {
+     const {
        urlName,
        urlDescription,
        urlNotes,
+       newUrl
      } = this.state
-    const {
-       saveUrl
-    } = this.props
+     const {
+       createUrl,
+       addUrlToArray,
+     } = this.props
 
 
-    return (
+   return (
         <Page 
           urlName={urlName}
           urlDescription={urlDescription}
           urlNotes={urlNotes}
-          saveUrl={saveUrl}
+          createUrl={this.createUrl}
+          addUrlToArray={addUrlToArray}
       />
     )
   }
@@ -51,13 +50,13 @@ class Create extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    saveUrl: state.saveUrl
+    createUrl: state.createUrl
   }
 }
 
 const mapDispatchToProps = {
   //This is available like a prop
-  saveUrl,
+  createUrl,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Create);
